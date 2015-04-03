@@ -15,12 +15,13 @@ class Receipt():
         pass
 
     def add(self, quantity, description, price):
-        tax = Item.calculate_tax(description)
-
         self.number_of_items += 1
         self.quantity.append(quantity)
         self.description.append(description)
         self.price.append(price)
+
+        tax = Item.calculate_tax(description)
+        print tax
         self.tax.append(tax)
 
     def calculate_final_price(self, position):
@@ -30,7 +31,11 @@ class Receipt():
         """
         round to the nearest 0.05
         """
-        return round_to * round(number / round_to, 0)
+        multiply = round(number / round_to)
+        if multiply * round_to < number:
+            multiply += 1
+
+        return round_to * multiply
 
     def __str__(self):
         s = ""
@@ -52,7 +57,7 @@ class Receipt():
             self._sales_tax = 0
 
             for i in range(self.number_of_items):
-                self._sales_tax += round(self.price[i] * self.tax[i], 2)
+                self._sales_tax += self._round(self.price[i] * self.tax[i], 0.05)
 
         return self._sales_tax
 
