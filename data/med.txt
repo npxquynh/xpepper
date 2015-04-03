@@ -1,0 +1,5 @@
+pill
+tablet
+medicine
+drug
+painkiller

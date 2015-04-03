@@ -1,0 +1,58 @@
+fruit
+    apple
+    apricot
+    avocado
+    blueberry
+    blackberry
+    berry
+    cherry
+    cranberry
+    current
+    date
+    durian
+    grape
+    grapefruit
+    fig
+    jackfruit
+    kiwi
+    kumquat
+    mango
+    melon
+    orange
+    papaya
+    pear
+    peach
+    pineapple
+    plum
+    pomegranate
+    raspberry
+    strawberry
+    tangerine
+    watermelon
+vegetable
+    cucumber
+    lemon
+    lime
+fish
+    squid
+    tuna
+    salmon
+    anchovie
+    shrimp
+meat
+    pork
+    chicken
+    beef
+    lamb
+    rabbit
+    turkey
+sweet
+    chocolate
+    candy
+    cake
+snack
+bread
+rice
+lentil
+bean
+pasta
