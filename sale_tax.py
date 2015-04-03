@@ -1,15 +1,19 @@
-import re
+import re, os, sys
 from item import Item
 from receipt import Receipt
 
 def read_input(file_name):
     receipt = Receipt()
 
+    print "INPUT"
     with open(file_name) as file:
+        print "Input: %s" % file_name
         for line in file:
+            print line.strip()
             quantity, description, price = parse_line(line.strip())
             receipt.add(quantity, description, price)
 
+    print "OUTPUT"
     print receipt
 
 def parse_line(str):
@@ -24,6 +28,10 @@ def parse_line(str):
     return quantity, description, price
 
 if __name__ == "__main__":
-    read_input("./input/input1.txt")
-    read_input("./input/input2.txt")
-    read_input("./input/input3.txt")
+    folder_path = "./input/"
+    if len(sys.argv) != 0:
+        folder_path = sys.argv[1]
+
+    for f in os.listdir(folder_path):
+        file_name = os.path.join(folder_path, f)
+        read_input(file_name)

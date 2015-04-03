@@ -31,7 +31,6 @@ class Item():
     @staticmethod
     def is_tax_exempted(description):
         category = Item.good_category.classify(description)
-        print "category = %s" % category
         if category in ["book", "med", "food"]:
             return True
         else:
