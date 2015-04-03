@@ -11,12 +11,12 @@ class Item():
     def __init__(self):
         pass
 
-    @classmethod
-    def calculate_tax(cls, description):
+    @staticmethod
+    def calculate_tax(description):
         if description.find("imported") != -1:
-            return cls.calculate_tax_imported(description)
+            return Item.calculate_tax_imported(description)
         else:
-            return cls.calculate_basic_sales_tax(description)
+            return Item.calculate_basic_sales_tax(description)
 
     @staticmethod
     def calculate_tax_imported(description):
@@ -35,9 +35,6 @@ class Item():
         category = Item.good_category.classify(description)
         print "category = %s" % category
         if category in ["book", "med", "food"]:
-            print "tax exemption = True"
             return True
         else:
-            print "tax exemption = False"
             return False
-
