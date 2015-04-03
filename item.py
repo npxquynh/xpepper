@@ -1,7 +1,5 @@
 from good_category import GoodCategory
 
-import pdb
-
 class Item():
     IMPORT_DUTY = 0.05
     BASIC_TAX = 0.1

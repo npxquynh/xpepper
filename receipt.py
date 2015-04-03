@@ -6,8 +6,6 @@ class Receipt():
 
     def __init__(self):
         self.number_of_items = 0
-
-
         self.quantity = []
         self.description = []
         self.price = []
@@ -21,7 +19,6 @@ class Receipt():
         self.price.append(price)
 
         tax = Item.calculate_tax(description)
-        print tax
         self.tax.append(tax)
 
     def calculate_final_price(self, position):
@@ -31,26 +28,11 @@ class Receipt():
         """
         round to the nearest 0.05
         """
-        multiply = round(number / round_to)
+        multiply = round(number / round_to, 0)
         if multiply * round_to < number:
             multiply += 1
 
         return round_to * multiply
-
-    def __str__(self):
-        s = ""
-        for i in range(self.number_of_items):
-            s += ("%d %s: %.2f\n" % (
-                self.quantity[i],
-                self.description[i],
-                self.calculate_final_price(i)
-            ))
-
-
-        s += ("Sales Taxes: %.2f\n" % self.get_sales_tax())
-        s += ("Total: %.2f\n" % self.get_total())
-
-        return s
 
     def get_sales_tax(self):
         if self._sales_tax is None:
@@ -68,7 +50,16 @@ class Receipt():
 
         return self._total
 
-if __name__ == "__main__":
-    receipt = Receipt()
-    receipt.add(1, "milk", 3)
-    receipt.__print__()
+    def __str__(self):
+        s = ""
+        for i in range(self.number_of_items):
+            s += ("%d %s: %.2f\n" % (
+                self.quantity[i],
+                self.description[i],
+                self.calculate_final_price(i)
+            ))
+
+        s += ("Sales Taxes: %.2f\n" % self.get_sales_tax())
+        s += ("Total: %.2f\n" % self.get_total())
+
+        return s
