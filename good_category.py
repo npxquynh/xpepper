@@ -1,5 +1,5 @@
 import re, os
-import pdb
+from nltk.stem import WordNetLemmatizer
 import utility
 
 class GoodCategory():
@@ -7,6 +7,7 @@ class GoodCategory():
     DEFAULT_CATEGORY = "other"
     CATEGORY = ["food", "med", "book", "other"]
 
+    wordnet_lemmatizer = WordNetLemmatizer()
     classifier = dict()
 
     def __init__(self, data_folder = ""):
@@ -30,11 +31,9 @@ class GoodCategory():
 
         for token in tokens:
             for (key, word_set) in self.classifier.iteritems():
+                token = self.wordnet_lemmatizer.lemmatize(token)
                 if token in word_set:
                     category = key
                     break
 
         return category
-
-
-
